@@ -4,7 +4,7 @@ Dentro de este repositorio se llevará a cabo actividades a fines con el área c
 - Creación de Proyectos.
 - Desarrollo de los mismos.
 - Realización de actividades brindadas por el docente.
-- Manejo de Issues, Tags y Kanban
+- Manejo de Issues, Tags y Kanban.
 - Manejo de las ramas secundarias y principal.
 
 Entre otros.
