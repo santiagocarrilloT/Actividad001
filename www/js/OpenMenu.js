@@ -1,69 +1,61 @@
-document.addEventListener('init', () => {
-  const homeButton = document.getElementById('home');
-  const settingsButton = document.getElementById('settings');
-  const aboutButton = document.getElementById('about');
-  const content = document.getElementById('content');
-  const openHomeButton = document.getElementById('openHome');
-  const openSettingButton = document.getElementById('openSetting');
-  const openAboutButton = document.getElementById('openAbout');
-  const splitMenu = document.getElementById('splitMenu');
-  let currentPage = '';
+let currentPage = '';
+const content = document.getElementById('content');
+const splitMenu = document.getElementById('splitMenu');
 
-  const loadPage = (page) => {
-    if (currentPage !== page) {
-      content.load(`${page}.html`);
-      currentPage = page;
+document.addEventListener('show', () => {
+    const homeButton = document.getElementById('home');
+    const settingsButton = document.getElementById('settings');
+    const aboutButton = document.getElementById('about');
+    const openToolHome = document.getElementById('openHome');
+    const openToolSett = document.getElementById('openSetting');
+    const openToolAbout = document.getElementById('openAbout');
+
+    //Acciones de los botones del split para cargar la ventana
+    const loadHomePage = () => {
+        loadPage('home.html');  
+    };
+
+    const loadSettingsPage = () => {
+        loadPage('settings.html');
+    };
+
+    const loadAboutPage = () => {
+        loadPage('about.html');
+    };
+
+    // Asociar funciones de carga de páginas a los eventos de click
+    if (homeButton) {
+        homeButton.addEventListener('click', loadHomePage);
     }
-    splitMenu.close();
-  };
 
-  const loadHomePage = () => {
-      loadPage('home');
-  };
+    if (settingsButton) {
+        settingsButton.addEventListener('click', loadSettingsPage);
+    }
 
-  const loadSettingsPage = () => {
-      loadPage('settings');
-  };
+    if (aboutButton) {
+        aboutButton.addEventListener('click', loadAboutPage);
+    }
 
-  const loadAboutPage = () => {
-      loadPage('about');
-  };
+    // Asociar función para abrir el menú lateral al hacer click en el botón de menú en la barra de herramientas
+    if (openToolHome) {
+        openToolHome.addEventListener('click', openMenu);
+    }
 
-  // Asociar funciones de carga de páginas a los eventos de clic
-  if (homeButton) {
-      homeButton.addEventListener('click', loadHomePage);
-  }
+    if (openToolSett) {
+        openToolSett.addEventListener('click', openMenu);
+    }
 
-  if (settingsButton) {
-      settingsButton.addEventListener('click', loadSettingsPage);
-  }
-
-  if (aboutButton) {
-      aboutButton.addEventListener('click', loadAboutPage);
-  }
-
-  // Asociar función para abrir el menú lateral al hacer clic en el botón de menú en la barra de herramientas
-  if (openHomeButton) {
-      openHomeButton.addEventListener('click', () => {
-          if (!splitMenu.isVisible) {
-              splitMenu.open();
-          }
-      });
-  }
-
-  if (openSettingButton) {
-      openSettingButton.addEventListener('click', () => {
-          if (!splitMenu.isVisible) {
-              splitMenu.open();
-          }
-      });
-  }
-
-  if (openAboutButton) {
-      openAboutButton.addEventListener('click', () => {
-          if (!splitMenu.isVisible) {
-              splitMenu.open();
-          }
-      });
-  }
+    if (openToolAbout) {
+        openToolAbout.addEventListener('click', openMenu);
+    }
 });
+
+const openMenu = () => {
+    splitMenu.open();
+};
+const loadPage = (page) => {
+    if (currentPage !== page) {
+        content.load(page).then(splitMenu.close.bind(splitMenu));
+        currentPage = page;
+    }
+};
