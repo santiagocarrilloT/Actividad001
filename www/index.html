@@ -10,21 +10,6 @@
         <meta name="color-scheme" content="light dark">
         <title>Plugins Practica</title>
 
-        <script src="js/index.js"></script>
-        <script src="js/Geolocation.js"></script>
-        <script src="js/Batery.js"></script>
-        <script src="js/VibrationPluginTest.js"></script>
-        <script src="js/onsenui.min.js"></script>
-        <script src="js/CameraPlugin.js"></script>
-        <script src="js/Media.js"></script>
-        <script src="js/Dialogs.js"></script>
-        <script src="js/NetWork.js"></script>
-        <script src="js/Orientation.js"></script>
-        <script src="js/OpenMenu.js"></script>
-
-        <script src="../platforms/browser/www/cordova.js"></script>
-        <script src="cordova.js"></script>
-
         <link rel="stylesheet" href="css/onsenui.css">
         <link rel="stylesheet" href="css/onsen-css-components.css">
     </head>
@@ -50,7 +35,10 @@
     </ons-splitter>
 
     <template id="home.html">
-        <ons-page>
+        <ons-page id="homePage">
+            <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+                <ons-button id="btnNote">+ Nota</ons-button>
+            </p>
             <div style="width: 281px; height: 133px; padding-top: 38px; padding-bottom: 32px; padding-left: 32px; padding-right: 32px; background: #F8D872; box-shadow: 4px 4px 0px black; border: 1px black solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: inline-flex">
                 <div style="width: 279px; height: 16px; background: #F5B332"></div>
                 <div style="align-self: stretch; color: black; font-size: 22px; font-family: Roboto; font-weight: 700; line-height: 28px; word-wrap: break-word">MERCADO</div>
@@ -76,9 +64,6 @@
                     Notas
                 </div>
             </ons-toolbar>
-            <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-                <ons-button id="f_template">+ Nota</ons-button>
-            </p>
         </ons-page>
     </template>
 
@@ -147,5 +132,13 @@
             <ons-button id="networkBtn">Network</ons-button>
         </ons-page>
     </template>-->
+        <!--<script src="js/index.js"></script>-->
+        <script src="js/onsenui.min.js"></script>
+        <script src="js/Conexion/conexionDB.js"></script>
+        <script src="js/Home/addNote.js"></script>
+        <script src="js/OpenMenu.js"></script>
+
+        <script src="../platforms/browser/www/cordova.js"></script>
+        <script src="cordova.js"></script>
     </body>
 </html>

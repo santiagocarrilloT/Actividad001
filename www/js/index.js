@@ -28,7 +28,10 @@ function onDeviceReady() {
         console.log('Base de datos y tabla creada con éxito', data);
     });
 
-    
+    //Botón para validar login
+    var botonLogin = document.querySelector('#sigIn');
+    botonLogin.addEventListener('click', abrirIndex, false);
+
     // Botón para mostrar la tabla completa
     var botonMostrarTable = document.querySelector('#show' );
     botonMostrarTable.addEventListener('click', mostrarTabla, false);
@@ -55,6 +58,7 @@ function onDeviceReady() {
     var botonCancelarCamb = document.querySelector('#cancelarCambios');
     botonCancelarCamb.addEventListener('click', cancelarEdicion, false);
 }
+
 // Consultas a la base de datos sqlite
 function sqltx(sql){
     global_database.transaction(function(tx) {
@@ -69,6 +73,37 @@ function sqltx(sql){
         console.log(error);
     });
 }
+
+//Funcioones destinadas a los botones de la aplicación
+//Función para abrir la ventana index.html
+function abrirIndex(){
+    var user = document.getElementById('username').value;
+    var pass = document.getElementById('password').value;
+
+    if (user.trim() === '' || pass.trim() === ''){
+        ons.notification.alert('Usuario o contraseña no ingresados');
+        window.open('index.html', '_self');
+        return; 
+    }
+    else{
+        global_database.transaction(function(tx){
+            tx.executeSql('SELECT usuario,contrasena FROM demo_table WHERE usuario = ? AND contrasena = ?', [user, pass], function(tx,rs){
+                if(rs.rows.length > 0){
+                    window.open('index.html', '_self');
+                }
+                else{
+                    ons.notification.alert('Usuario o contraseña incorrectos');
+                    return;
+                }
+
+            },function(tx,error){
+                console.log('Error: '+ error.message);
+            });
+        });
+    }
+    //window.open('index.html', '_self')
+}
+
 
 // Consultar todos los datos de la tabla
 var mostrarTabla = function() {
