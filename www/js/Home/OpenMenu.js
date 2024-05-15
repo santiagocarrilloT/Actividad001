@@ -55,7 +55,10 @@ const openMenu = () => {
 };
 const loadPage = (page) => {
     if (currentPage !== page) {
-        content.load(page).then(splitMenu.close.bind(splitMenu));
+        content.load(page, { animation: 'fade' }).then((a) => {
+            splitMenu.close.bind(splitMenu)
+            extraerNotas();
+        });
         currentPage = page;
     }
 };
