@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy"
+              content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <title>Plugins Practica</title>
+
+        <link rel="stylesheet" href="../css/onsenui.css">
+        <link rel="stylesheet" href="../css/onsen-css-components.css">
+    </head>
+
+    <body>
+    <ons-splitter id="splitGeneral">
+        <ons-splitter-side id="splitMenu" side="left" width="220px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item id="home" tappable>
+                        Notas
+                    </ons-list-item>
+                    <ons-list-item id="settings" tappable>
+                        Settings
+                    </ons-list-item>
+                    <ons-list-item id="about" tappable>
+                        About
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+    </ons-splitter>
+
+    <!-- Página principal-->
+    <template id="home.html">
+        <ons-page id="homePage">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="openHome">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Notas
+                </div>
+            </ons-toolbar>
+            <ons-fab id="btnNote" position="bottom right">
+                <ons-icon icon="md-plus"></ons-icon>
+            </ons-fab>
+        </ons-page>
+    </template>
+
+    <template id="settings.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="openSetting">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Settings
+                </div>
+            </ons-toolbar>
+        </ons-page>
+    </template>
+
+    <template id="about.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button id="openAbout">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    About
+                </div>
+            </ons-toolbar>
+        </ons-page>
+    </template>
+
+    <!-- Página para crear o editar una nueva nota-->
+    <template id="pageNav1.html">
+        <ons-page id="pageNav1">
+          <ons-toolbar>
+            <div class="left">
+              <ons-back-button id="backHome">Back</ons-back-button>
+            </div>
+            <div class="center"></div>
+          </ons-toolbar>
+      
+          <div style="text-align: center">
+            <h1>Agregar Nota</h1>
+            <p>
+                <ons-input id="textTitle" modifier="underbar" placeholder="Title" float></ons-input>
+            </p>
+            <p>
+                <ons-input id="textBody" modifier="underbar" placeholder="Text" float></ons-input>
+              </p>
+            <ons-button id="btnCreate">
+                Nueva Nota
+            </ons-button>
+          </div>
+      
+          <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+            Agregar una nueva nota
+          </p>
+        </ons-page>
+      </template>
+        <script src="../js/onsenui.min.js"></script>
+        <script src="../js/Sesion/index.js"></script>
+        <!--<script src="../js/Conexion/conexionDB.js"></script>-->
+        <script src="../js/Home/addNote.js"></script>
+        <script src="../js/Home/OpenMenu.js"></script>
+        <script src="../js/Home/cargarNotasDB.js"></script>
+
+        <script src="../platforms/browser/www/cordova.js"></script>
+        <script src="../cordova.js"></script>
+    </body>
+</html>

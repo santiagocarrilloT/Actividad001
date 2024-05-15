@@ -14,7 +14,11 @@ function conectarDB(){
         console.error('Error al abrir la base de datos', error);
     });
 
-    global_database.transaction(function(tx){
-        tx.executeSql('CREATE TABLE IF NOT EXISTS notes (id integer primary key, nombre text, email text)')
+    global_database.transaction(function(tx) {
+        tx.executeSql('CREATE TABLE IF NOT EXISTS notas (id_notas integer primary key, id_usuario integer, titulo text, body text, notificacion boolean, id_ubicacion int, FOREIGN KEY (id_usuario) REFERENCES demo_table(id))');
+    }, function(err) {
+        console.error('Transaction ERROR: ' + err.message);
+    }, function(data) {
+        console.log('BD y tabla -notas- creada con éxito', data);
     });
 }
