@@ -1,0 +1,36 @@
+ons-button#sigIn {
+    background-color: #E97D30 !important; /* Color sapote */
+    border: none !important;
+}
+
+ons-button#register {
+    color: #E97D30 !important; /* Color sapote */
+}
+
+ons-page #incioSesion {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh;
+    background-color: #121212;
+}
+
+
+ons-toolbar {
+    background-color: #E97D30 !important; /* Color sapote */
+}
+
+ons-toolbar .center,
+ons-toolbar .left ons-toolbar-button {
+    color: #000000 !important; /* Color del texto y botones dentro del toolbar */
+}
+
+ons-fab {
+    background-color: #E97D30 !important; /* Color sapote */
+}
+
+
+
+
+
+

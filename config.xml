@@ -6,7 +6,7 @@
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
         Apache Cordova Team
     </author>
-    <content src="../Sesion-html/pagina2.html" />
+    <content src="../Sesion-html/inicioSesion.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 
