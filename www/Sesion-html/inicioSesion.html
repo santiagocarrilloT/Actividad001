@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="../css/onsenui.css">
+    <link rel="stylesheet" href="../css/onsen-css-components.css"> <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="../configTemas/estiloInicioSesion.css">
+</head>
+<body>
+  <ons-page id="incioSesion">
+    <div style="text-align: center; margin-top: 30px;">
+      <p>
+        <img src="../img/drawable-xxxhdpi-icon.png" alt="Logo de la App" class="app-logo">
+      </p>
+      <p>
+        <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+      </p>
+      <p>
+        <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+      </p>
+      <p style="margin-top: 30px;">
+        <ons-button id="sigIn" >Iniciar sesión</ons-button>
+      </p>
+      <p>
+        <ons-button id="register" modifier="quiet">¿No tienes una cuenta? Regístrate</ons-button>
+    </p>
+    </div>
+  </ons-page>
+
+    <script>
+        document.addEventListener('init', function(event) {
+            var page = event.target;
+            if (page.id === 'loginPage') {
+                page.querySelector('#sigIn').onclick = function() {
+                    // Lógica para iniciar sesión
+                };
+                page.querySelector('#register').onclick = function() {
+                    // Redirigir a la página de registro
+                    window.location.href = 'register.html';
+                };
+            }
+        });
+    </script>
+
+    <script src="../js/Sesion/index.js"></script>
+    <script src="../js/onsenui.min.js"></script>
+    <script src="../platforms/browser/www/cordova.js"></script>
+    <script src="../cordova.js"></script>
+
+</body>
+</html>
