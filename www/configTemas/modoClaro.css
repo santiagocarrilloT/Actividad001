@@ -1,0 +1,12 @@
+body.light-theme {
+    background-color: #fff;
+    color: #000;
+
+}  
+
+ons-page.light-theme,
+ons-toolbar.light-theme,
+ons-list-item.light-theme {
+    background-color: #fff;
+    color: #000;
+}

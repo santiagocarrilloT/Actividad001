@@ -1,3 +1,10 @@
+
+
+/*Personalizacion de inicio Sesion*/
+#splitMenu ons-list-item {
+    background-color: #121212;
+    color: #ffffff
+}
 ons-button#sigIn {
     background-color: #E97D30 !important; /* Color sapote */
     border: none !important;
@@ -5,14 +12,6 @@ ons-button#sigIn {
 
 ons-button#register {
     color: #E97D30 !important; /* Color sapote */
-}
-
-ons-page #incioSesion {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh;
-    background-color: #121212;
 }
 
 
