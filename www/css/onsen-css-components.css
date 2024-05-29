@@ -3947,6 +3947,7 @@ h4, h5, h6 {
   margin: 0;
   color: inherit;
   line-height: normal;
+  outline-width: 12px;
 
   /* mixin: reset-cursor */
   cursor: default;
@@ -4100,6 +4101,7 @@ h4, h5, h6 {
   margin: 0;
 }
 .list-item__center {
+  max-width: 800px;
   box-sizing: border-box;
   display: -webkit-flex;
   display: flex;
@@ -4116,7 +4118,7 @@ h4, h5, h6 {
           align-items: center;
   -webkit-align-self: stretch;
           align-self: stretch;
-  margin-left: 0;
+  margin-left: 40;
 
   /* mixin: retina-list-item-border */
   border-bottom: none;

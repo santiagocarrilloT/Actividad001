@@ -12,15 +12,15 @@ document.addEventListener('show', () => {
 
     //Acciones de los botones del split para cargar la ventana
     const loadHomePage = () => {
-        loadPage('home.html');  
+        loadPage('home.html')
     };
 
     const loadSettingsPage = () => {
-        loadPage('settings.html');
+        loadPage('settings.html')
     };
 
     const loadAboutPage = () => {
-        loadPage('about.html');
+        loadPage('about.html')
     };
 
     // Asociar funciones de carga de páginas a los eventos de click
@@ -53,12 +53,13 @@ document.addEventListener('show', () => {
 const openMenu = () => {
     splitMenu.open();
 };
+
 const loadPage = (page) => {
     if (currentPage !== page) {
-        content.load(page, { animation: 'fade' }).then((a) => {
-            splitMenu.close.bind(splitMenu)
+        content.load(page, { animation: 'fade' }).then(()=>{
+            splitMenu.close();
             extraerNotas();
-        });
+        })
         currentPage = page;
     }
 };
