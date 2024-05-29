@@ -113,80 +113,56 @@
     <!-- Página para crear o editar una nueva nota-->
     <template id="pageNav1.html">
         <ons-page id="pageNav1">
-            <ons-toolbar>
+            <ons-toolbar style="height: 55px; align-items: center; justify-content: center;">
                 <div class="left">
-                    <ons-back-button id="backHome">Back</ons-back-button>
+                  <ons-back-button id="backHome">Back</ons-back-button>
                 </div>
                 <div class="center"></div>
-            </ons-toolbar>
     
-            <div style="text-align: center">
+                <!--Botón guardar ubicado en el toolbar-->
+                <div class="right">
+                  <ons-button id="btnCreate" style="margin: 10px;">
+                    <ons-icon icon="ion-ios-share" style="padding: 12px 12px;"></ons-icon>
+                  </ons-button>
+                </div>
+              </ons-toolbar>
+          
+              <div style="text-align: center">
                 <h1>Agregar Nota</h1>
-                <p>
+                <ons-list-item>
+                    <div class="center">
+                      Habilitar recordatorio
+                    </div>
+                    <div class="right">
+                      <ons-switch id="switchNoti"></ons-switch>
+                    </div>
+                  </ons-list-item>
+                  <ons-list-item>
+                    <div class="center">
+                      Habilitar Ubicación 
+                    </div>
+                    <div class="right">
+                      <ons-switch id="swtichUbi"></ons-switch>
+                    </div>
+                  </ons-list-item>
+                <!--<p>
                     <ons-input id="textTitle" modifier="underbar" placeholder="Title" float></ons-input>
-                </p>
-                <p>
+                </p>-->
+                <!--<p>
                     <ons-input id="textBody" modifier="underbar" placeholder="Text" float></ons-input>
-                </p>
-                <ons-button id="btnCreate">
-                    Nueva Nota
-                </ons-button>
-            </div>
-    
-            <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-            Agregar una nueva nota
-            </p>
+                </p>-->
+                <textarea id="textTitle" class="textarea" cols="100" rows="20" placeholder="Título" style="max-width: 230px; margin-right: 7px;"></textarea>
+                <textarea id="textBody" class="textarea" cols="300" rows="20" placeholder="Escribe aquí" style="max-width: 530px; margin-left: 7px;"></textarea>
+              </div>
+          
+              <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+                Agregar una nueva nota
+              </p>
+              
         </ons-page>
     </template>
-        
-
-          <ons-toolbar style="height: 55px; align-items: center; justify-content: center;">
-            <div class="left">
-              <ons-back-button id="backHome">Back</ons-back-button>
-            </div>
-            <div class="center"></div>
-
-            <!--Botón guardar ubicado en el toolbar-->
-            <div class="right">
-              <ons-button id="btnCreate" style="margin: 10px;">
-                <ons-icon icon="ion-ios-share" style="padding: 12px 12px;"></ons-icon>
-              </ons-button>
-            </div>
-          </ons-toolbar>
-      
-          <div style="text-align: center">
-            <h1>Agregar Nota</h1>
-            <ons-list-item>
-                <div class="center">
-                  Habilitar recordatorio
-                </div>
-                <div class="right">
-                  <ons-switch id="switchNoti"></ons-switch>
-                </div>
-              </ons-list-item>
-              <ons-list-item>
-                <div class="center">
-                  Habilitar Ubicación 
-                </div>
-                <div class="right">
-                  <ons-switch id="swtichUbi"></ons-switch>
-                </div>
-              </ons-list-item>
-            <!--<p>
-                <ons-input id="textTitle" modifier="underbar" placeholder="Title" float></ons-input>
-            </p>-->
-            <!--<p>
-                <ons-input id="textBody" modifier="underbar" placeholder="Text" float></ons-input>
-            </p>-->
-            <textarea id="textTitle" class="textarea" cols="100" rows="20" placeholder="Título" style="max-width: 230px; margin-right: 7px;"></textarea>
-            <textarea id="textBody" class="textarea" cols="300" rows="20" placeholder="Escribe aquí" style="max-width: 530px; margin-left: 7px;"></textarea>
-          </div>
-      
-          <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-            Agregar una nueva nota
-          </p>
-          
         </ons-page>
+
       </template>
         <script src="../js/onsenui.min.js"></script>
         <script src="../js/Sesion/index.js"></script>
