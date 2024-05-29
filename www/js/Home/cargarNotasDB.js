@@ -9,7 +9,6 @@ function extraerNotas(){
                     const datosNotas = rs.rows.item(i);
                     datosNotasList.add(datosNotas.id_notas);
                     agregarDivs(datosNotas.titulo, datosNotas.body, datosNotas.id_notas);
-                    //console.log('Datos de notas:', datosNotas);
                 }
             }else{
                 console.error('No se encontraron datos en notas');
@@ -55,6 +54,26 @@ function nuevaNota(){
     });
 }
 
+function informacionNota(idNota){
+    console.log("info "+idNota);
+    global_database.transaction(function(tx){
+        tx.executeSql('SELECT * FROM notas WHERE id_notas = ?', [idNota], function(tx, rs){
+            if (rs.rows.length > 0){
+                const datosNotas = rs.rows.item(0);
+                console.log("infor: "+datosNotas.titulo+" "+datosNotas.body+" "+datosNotas.id_notas);
+                document.getElementById('textTitle').value = datosNotas.titulo;
+                document.getElementById('textBody').value = datosNotas.body;
+                return datosNotas;
+            }else{
+                console.error('No se encontraron datos en notas');
+            }
+        }, function(error){
+            console.error('El comando no ha sido correcto', error);
+        });
+    });
+
+}
+
 function agregarDivs(titulo, body, idNota){
     const homePage = document.querySelector('#homePage');
 
@@ -65,6 +84,8 @@ function agregarDivs(titulo, body, idNota){
         if (pageContent) {
             // Crea un nuevo div para la nota
             const newDiv = document.createElement('div');
+            newDiv.classList.add('divBtn');
+            newDiv.id = idNota; 
             newDiv.style.width = '281px';
             newDiv.style.height = '133px';
             newDiv.style.paddingTop = '38px';
@@ -111,12 +132,22 @@ function agregarDivs(titulo, body, idNota){
             const selectNota = document.createElement('ons-button');
             selectNota.id = idNota;
             selectNota.style.backgroundColor = 'transparent';
-            selectNota.style.paddingTop = '30px';
+            selectNota.style.paddingTop = '10px';
             selectNota.style.paddingBottom = '20px';
+            selectNota.addEventListener('click', () => editarNota(idNota), false);
             selectNota.appendChild(newDiv);
 
             // Agrega el nuevo div al page__content
-            pageContent.prepend(selectNota);
+            pageContent.prepend(selectNota); 
+
+            /*pageContent.addEventListener('click', (event) =>{
+                if(event.target.classList.contains('divBtn')){
+                    const id = event.target.id;
+                    console.log('ID de la nota seleccionada: ' + id);
+                    editarNota(id);
+                }else{
+                }
+            });*/
         } 
         else {
             console.error('No se encontró el elemento .page__content');

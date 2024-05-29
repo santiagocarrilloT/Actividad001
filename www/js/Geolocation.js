@@ -24,7 +24,8 @@ document.addEventListener("init", () => {
                 }
     
                 navigator.geolocation.getCurrentPosition(onSuccess, onError);
-            var onMapSuccess = function (position) {
+                getMap(position.coords.latitude, position.coords.longitude);
+                var onMapSuccess = function (position) {
     
                 Latitude = position.coords.latitude;
                 Longitude = position.coords.longitude;
@@ -38,4 +39,13 @@ document.addEventListener("init", () => {
         console.error('El elemento con ID btnLocation no fue encontrado.');
     }
 });
+
+function getMap(lat, long) {
+    var mapOptions = {
+        center: new google.maps.LatLng(lat, long),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
 

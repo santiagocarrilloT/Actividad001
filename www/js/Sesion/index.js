@@ -37,6 +37,7 @@ function onDeviceReady() {
         console.log('BD y tabla -notas- creada con éxito', data);
     });
     
+    // Insertar registros en la tabla notas
     global_database.transaction(function(tx) {
         tx.executeSql('INSERT INTO notas (titulo, body, notificacion) VALUES (?,?,?)', ['titulo1', 'body', true], function(tx, rs) {
             console.log('Registro en cargarNotas insertado con éxito');
