@@ -1,8 +1,6 @@
-:root {
-    --background-color: #121212;
-    --material-background-color: #121212;
-}
 
+
+/*Personalizacion de inicio Sesion*/
 #splitMenu ons-list-item {
     background-color: #121212;
     color: #ffffff

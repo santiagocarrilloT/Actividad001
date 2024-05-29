@@ -8,17 +8,20 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
-        <title>Plugins Practica</title>
+        <title>Home Notes Web</title>
 
         <link rel="stylesheet" href="../css/onsenui.css">
+        <!--<link rel="stylesheet" href="../configTemas/tema3.css">-->
         <link rel="stylesheet" href="../css/onsen-css-components.css">
-        <link rel="stylesheet" href="../configTemas/estiloInicioSesion.css">
+        <link id="modoOC" rel="stylesheet" href="../css/css-components-src/old-theme.css">
+        <link rel="stylesheet" type="text/css" href="index.css">
     </head>
 
     <body>
+        
     <ons-splitter id="splitGeneral">
         <ons-splitter-side id="splitMenu" side="left" width="220px" collapse swipeable>
-            <ons-page>
+            <ons-page class="dark-theme">
                 <ons-list>
                     <ons-list-item id="home" tappable>
                         Notas
@@ -54,18 +57,39 @@
         </ons-page>
     </template>
 
+    <!-- Página configuraciones-->
     <template id="settings.html">
         <ons-page>
             <ons-toolbar>
                 <div class="left">
                     <ons-toolbar-button id="openSetting">
                         <ons-icon icon="md-menu"></ons-icon>
-                    </ons-toolbar-button>
-                </div>
+                    </div>
                 <div class="center">
-                    Settings
+                    Configuraciones
                 </div>
             </ons-toolbar>
+    
+            <ons-list-header>Modo Oscuro</ons-list-header>
+            <ons-list-item>
+                <div class="left">
+                    <ons-icon icon="moon" class="list-item__icon"></ons-icon>
+                </div>
+                <div class="center">
+                    Activar Modo Oscuro
+                </div>
+                <div class="right">
+                    <ons-switch id="miSwitch"></ons-switch>
+                </div>
+            </ons-list-item>
+    
+            <ons-list-title>Seleccionar Tema</ons-list-title>
+            <ons-list id="checkTema">
+                <ons-list-item tappable class="tema-circulo" data-theme="../configTemas/tema1.css" style="background-color: #f44336;">Tema 1</ons-list-item>
+                <ons-list-item tappable class="tema-circulo" data-theme="../configTemas/tema2.css" style="background-color: #3f51b5;">Tema 2</ons-list-item>
+                <ons-list-item tappable class="tema-circulo" data-theme="../configTemas/tema3.css" style="background-color: #E97D30;">Tema 3</ons-list-item>
+                <!-- Agrega más temas aquí -->
+            </ons-list>
         </ons-page>
     </template>
 
@@ -87,39 +111,43 @@
     <!-- Página para crear o editar una nueva nota-->
     <template id="pageNav1.html">
         <ons-page id="pageNav1">
-          <ons-toolbar>
-            <div class="left">
-              <ons-back-button id="backHome">Back</ons-back-button>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button id="backHome">Back</ons-back-button>
+                </div>
+                <div class="center"></div>
+            </ons-toolbar>
+    
+            <div style="text-align: center">
+                <h1>Agregar Nota</h1>
+                <p>
+                    <ons-input id="textTitle" modifier="underbar" placeholder="Title" float></ons-input>
+                </p>
+                <p>
+                    <ons-input id="textBody" modifier="underbar" placeholder="Text" float></ons-input>
+                </p>
+                <ons-button id="btnCreate">
+                    Nueva Nota
+                </ons-button>
             </div>
-            <div class="center"></div>
-          </ons-toolbar>
-      
-          <div style="text-align: center">
-            <h1>Agregar Nota</h1>
-            <p>
-                <ons-input id="textTitle" modifier="underbar" placeholder="Title" float></ons-input>
-            </p>
-            <p>
-                <ons-input id="textBody" modifier="underbar" placeholder="Text" float></ons-input>
-              </p>
-            <ons-button id="btnCreate">
-                Nueva Nota
-            </ons-button>
-          </div>
-      
-          <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+    
+            <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
             Agregar una nueva nota
-          </p>
+            </p>
         </ons-page>
-      </template>
+    </template>
+        
         <script src="../js/onsenui.min.js"></script>
         <script src="../js/Sesion/index.js"></script>
         <!--<script src="../js/Conexion/conexionDB.js"></script>-->
         <script src="../js/Home/addNote.js"></script>
         <script src="../js/Home/OpenMenu.js"></script>
-        <script src="../js/Home/cargarNotasDB.js"></script>
+        <script src="../js/Home/cargarNotasDB.js"></script>  
+        <script src="confiTemas.js"></script>
 
-        <script src="../platforms/browser/www/cordova.js"></script>
+        <script src="../../platforms/browser/www/cordova.js"></script>
         <script src="../cordova.js"></script>
+        
+
     </body>
 </html>

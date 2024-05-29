@@ -1,0 +1,16 @@
+.tema-circulo {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    
+}
+
+.tema-circulo div {
+    margin-left: 70px;
+    display: inline-block;
+    white-space: nowrap;
+}
