@@ -29,7 +29,7 @@ function pluginMap () {
     // onError Callback receives a PositionError object
     //
     function onError(error) {
-        alert('code: '    + error.code    + '\n' +
+        ons.alert('code: '    + error.code    + '\n' +
         'message: ' + error.message + '\n');
     }
     
