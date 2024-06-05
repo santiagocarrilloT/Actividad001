@@ -1,7 +1,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-import { doc, getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, addDoc, where, query, updateDoc, doc, deleteDoc} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,4 +27,10 @@ export const cerrarSesion = signOut;
 export const validarUser = onAuthStateChanged;
 export const signInUser = signInWithEmailAndPassword;
 export const selectCollection = collection;
-export const getDoc = getDocs; 
+export const getDoc = getDocs;
+export const addDocument = addDoc;
+export const whereFB = where;
+export const queryFB = query;
+export const actualizarNota = updateDoc;
+export const docAct = doc;
+export const eliminarNota = deleteDoc;

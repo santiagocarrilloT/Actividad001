@@ -1,5 +1,6 @@
 import {signInUser, auth} from "../Conexion/conexionDB.js";
 
+
 const iniciarSesion = document.querySelector("#sigIn");
 
 iniciarSesion.addEventListener("click", async (e) => {
@@ -20,6 +21,7 @@ async function sigIn(email, password){
         // Signed in 
         const user = userCredential.user;
         ons.notification.alert("Iniciaste sesión éxito");
+        window.open('../Home-html/index.html', '_top');
       })
       .catch((error) => {
         const errorCode = error.code;

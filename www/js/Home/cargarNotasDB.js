@@ -1,80 +1,22 @@
-document.addEventListener('deviceready', extraerNotas, false);
+import {validarUser, auth} from "../Conexion/conexionDB.js";
+import {abrirNota} from "../Notas/leerNotasFB.js";
+let userId = '';
 
-let datosNotasList = new Set();
-function extraerNotas(){
-    global_database.transaction(function(tx){
-        tx.executeSql('SELECT * FROM notas', [], function(tx, rs){
-            if (rs.rows.length > 0){
-                for(i = 0; i < rs.rows.length; i++){
-                    const datosNotas = rs.rows.item(i);
-                    datosNotasList.add(datosNotas.id_notas);
-                    agregarDivs(datosNotas.titulo, datosNotas.body, datosNotas.id_notas);
-                }
-            }else{
-                console.error('No se encontraron datos en notas');
-            }
-        }, function(error){
-            console.error('El comando no ha sido correcto', error);
-        });
-    });
+validarUser(auth, async (user) => {
+    if (user){
+        userId = user.uid;
+    }else{
+        console.log("No hay usuario");
+    }
+});
+
+
+export function informacionNota(titulo, body){
+    document.getElementById('textTitle').value = titulo;
+    document.getElementById('textBody').value = body;
 }
 
-/*function busquedasNotas() {
-    global_database.transaction(function(tx){
-        tx.executeSql('SELECT * FROM notas', [], function(tx, rs){
-            if (rs.rows.length > 0){
-                for(i = 0; i < rs.rows.length; i++){
-                    const datosNotas = rs.rows.item(i);
-                    return datosNotas;
-                }
-            }
-            else{
-                console.error('No se encontraron datos en notas');
-            }
-        }, function(error){
-            console.error('El comando no ha sido correcto', error);
-        });
-    });
-}*/
-
-function nuevaNota(){
-    global_database.transaction(function(tx) {
-        tx.executeSql('INSERT INTO notas (titulo, body, notificacion) VALUES (?,?,?)', ['titulo1', 'body', true], function(tx, rs) {
-            console.log('Registro en cargarNotas insertado con éxito');
-        }, function(error) {
-            console.log('INSERT error: ' + error.message);
-        });
-    });
-    global_database.transaction(function(tx) {
-        tx.executeSql('INSERT INTO notas (titulo, body, notificacion) VALUES (?,?,?)', ['titulo2', 'body2', true], function(tx, rs) {
-            console.log('Registro en cargarNotas insertado con éxito');
-        }, function(error) {
-            console.log('INSERT error: ' + error.message);
-        });
-    });
-}
-
-function informacionNota(idNota){
-    console.log("info "+idNota);
-    global_database.transaction(function(tx){
-        tx.executeSql('SELECT * FROM notas WHERE id_notas = ?', [idNota], function(tx, rs){
-            if (rs.rows.length > 0){
-                const datosNotas = rs.rows.item(0);
-                console.log("infor: "+datosNotas.titulo+" "+datosNotas.body+" "+datosNotas.id_notas);
-                document.getElementById('textTitle').value = datosNotas.titulo;
-                document.getElementById('textBody').value = datosNotas.body;
-                return datosNotas;
-            }else{
-                console.error('No se encontraron datos en notas');
-            }
-        }, function(error){
-            console.error('El comando no ha sido correcto', error);
-        });
-    });
-
-}
-
-function agregarDivs(titulo, body, idNota){
+export function agregarDivsFB(titulo, body, idNota){
     const homePage = document.querySelector('#homePage');
 
     if (homePage) {       
@@ -139,15 +81,6 @@ function agregarDivs(titulo, body, idNota){
 
             // Agrega el nuevo div al page__content
             pageContent.prepend(selectNota); 
-
-            /*pageContent.addEventListener('click', (event) =>{
-                if(event.target.classList.contains('divBtn')){
-                    const id = event.target.id;
-                    console.log('ID de la nota seleccionada: ' + id);
-                    editarNota(id);
-                }else{
-                }
-            });*/
         } 
         else {
             console.error('No se encontró el elemento .page__content');
@@ -156,4 +89,10 @@ function agregarDivs(titulo, body, idNota){
     else {
         console.error('No se encontró el <ons-page> con ID #homePage');
     }
+}
+
+function editarNota (idNota){
+    content.load('pageNav1.html', {OnComplete: true}).then(async (a) => {
+        await abrirNota(idNota, userId);
+    });
 }

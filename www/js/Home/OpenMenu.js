@@ -1,6 +1,18 @@
+import {validarUser, auth} from "../Conexion/conexionDB.js";
+import {consultaNotas} from "../Notas/leerNotasFB.js";
+
 let currentPage = '';
 const content = document.getElementById('content');
 const splitMenu = document.getElementById('splitMenu');
+let userId = '';
+
+validarUser(auth, async (user) => {
+    if (user){
+        userId = user.uid;
+    }else{
+        console.log("No hay usuario");
+    }
+});
 
 document.addEventListener('show', () => {
     const homeButton = document.getElementById('home');
@@ -56,9 +68,9 @@ const openMenu = () => {
 
 const loadPage = (page) => {
     if (currentPage !== page) {
-        content.load(page, { animation: 'fade' }).then(()=>{
+        content.load(page, { animation: 'fade' }).then(async ()=>{
             splitMenu.close();
-            extraerNotas();
+            await consultaNotas(userId);
         })
         currentPage = page;
     }

@@ -2,8 +2,9 @@
 <html lang="">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Security-Policy"
-              content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';">
+        <meta http-equiv="Content-Security-Policy" 
+    content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; 
+    style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' https://www.googletagmanager.com data: content:; script-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com https://www.googletagmanager.com https://unpkg.com 'unsafe-inline'; connect-src 'self' https://firebase.googleapis.com https://identitytoolkit.googleapis.com https://firestore.googleapis.com https://www.google-analytics.com https://unpkg.com https://securetoken.googleapis.com;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -15,6 +16,9 @@
         <link rel="stylesheet" href="../css/onsen-css-components.css">
         <link id="modoOC" rel="stylesheet" href="../css/css-components-src/old-theme.css">
         <link rel="stylesheet" type="text/css" href="index.css">
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
         <!-- <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.13/main.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.13/main.min.css" rel="stylesheet"> -->
@@ -57,6 +61,11 @@
                 </div>
                 <div class="center">
                     Notas
+                </div>
+                <div class="right">
+                    <ons-toolbar-button id="cerrar">
+                        <ion-icon size="large" name="log-out-outline"></ion-icon>
+                    </ons-toolbar-button>
                 </div>
             </ons-toolbar>
             <ons-fab id="btnNote" position="bottom right">
@@ -130,6 +139,9 @@
                   <ons-button id="btnCreate" style="margin: 10px;">
                     <ons-icon icon="ion-ios-share" style="padding: 12px 12px;"></ons-icon>
                   </ons-button>
+                  <ons-toolbar-button id="btnDelete">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </ons-toolbar-button>
                 </div>
               </ons-toolbar>
           
@@ -157,8 +169,8 @@
                 <!--<p>
                     <ons-input id="textBody" modifier="underbar" placeholder="Text" float></ons-input>
                 </p>-->
-                <textarea id="textTitle" class="textarea" cols="100" rows="20" placeholder="Título" style="max-width: 230px; margin-right: 7px;"></textarea>
-                <textarea id="textBody" class="textarea" cols="300" rows="20" placeholder="Escribe aquí" style="max-width: 530px; margin-left: 7px;"></textarea>
+                <textarea id="textTitle" class="textarea" cols="30" rows="2" placeholder="Título" style="max-width: 200px; margin-right: 7px;"></textarea>
+                <textarea id="textBody" class="textarea" cols="30" rows="10" placeholder="Escribe aquí" style="max-width: 400px; margin-left: 7px;"></textarea>
               </div>
           
               <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
@@ -174,20 +186,23 @@
 
       </template>
         <script src="../js/onsenui.min.js"></script>
-        <script src="../js/Sesion/index.js"></script>
-        <!--<script src="../js/Conexion/conexionDB.js"></script>-->
+
+        <script src="../js/Sesion/logout.js" type ="module"></script>
+        <!-- <script src="../js/Sesion/index.js"></script> -->
+
         <script src="../js/Notas/notificacion.js" type="module"></script>
         <script src="../js/Notas/geolocalizacion.js"></script>
-        <script src="../js/Home/addNote.js"></script>
-        <script src="../js/Home/OpenMenu.js"></script>
+        <script src="../js/Notas/addNoteFB.js" type="module"></script>
+        <script src="../js/Notas/leerNotasFB.js" type="module"></script>
 
-        <script src="../js/Home/cargarNotasDB.js"></script>  
+        <script src="../js/Home/addNote.js"></script>
+        <script src="../js/Home/OpenMenu.js" type="module"></script>
+        <script src="../js/Home/cargarNotasDB.js" type="module"></script> 
+         
         <script src="confiTemas.js"></script>
 
         <script src="../../platforms/browser/www/cordova.js"></script>
-        <script src="../js/Home/cargarNotasDB.js"></script>
         <script src="../cordova.js"></script>
         
-
     </body>
 </html>

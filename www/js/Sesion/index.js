@@ -55,9 +55,6 @@ function onDeviceReady() {
 
 
 
-    //Botón para validar login
-    /*var botonLogin = document.querySelector('#sigIn');
-    botonLogin.addEventListener('click', abrirIndex, false);*/
 }
 
 // Consultas a la base de datos sqlite
